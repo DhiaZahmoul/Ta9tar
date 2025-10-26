@@ -1,0 +1,97 @@
+/* headerForm.css */
+
+/* Navbar background */
+.navbar {
+  background-color: #0a0a0a !important; /* deep black */
+  border-bottom: 1px solid #f5d13d; /* subtle gold underline */
+  padding: 0.5rem 1rem;
+}
+
+/* Container inside navbar */
+.navbar .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form */
+.navbar .form-control {
+  background-color: #1a1a1a;
+  border: 1px solid #f5d13d;
+  color: #f5d13d;
+  border-radius: 8px 0 0 8px;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .form-control::placeholder {
+  color: #d1b64a99; /* semi-transparent gold */
+}
+
+.navbar .form-control:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 6px #ffd70066;
+  background-color: #1a1a1a;
+  color: #f5d13d;
+}
+
+/* Button */
+.navbar .btn-primary {
+  background: linear-gradient(90deg, #f5d13d, #ffd700);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .btn-primary:hover {
+  background: linear-gradient(90deg, #ffd700, #f5d13d);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Contact list container */
+.contact-list {
+  margin-top: 0.5rem;
+  background-color: #0a0a0a;
+  border: 1px solid #f5d13d;
+  border-radius: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+/* Individual contact item */
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #f5d13d33; /* subtle divider */
+  cursor: pointer;
+  color: #f5d13d;
+  transition: background 0.2s;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item:hover {
+  background-color: #1a1a1a;
+}
+
+/* Add button inside contact item */
+.contact-item button {
+  background: linear-gradient(90deg, #f5d13d, #ffd700);
+  border: none;
+  border-radius: 6px;
+  padding: 0.25rem 0.5rem;
+  color: #0a0a0a;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.contact-item button:hover {
+  background: linear-gradient(90deg, #ffd700, #f5d13d);
+}

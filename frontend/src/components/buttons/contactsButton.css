@@ -1,0 +1,43 @@
+/* Container */
+.contacts-button-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  z-index: 10;
+}
+
+/* Button style */
+.contacts-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f5d13d, #ffd700);
+  color: #0a0a0a;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+}
+
+.contacts-btn:hover {
+  background: linear-gradient(90deg, #ffd700, #f5d13d);
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.5);
+}
+
+/* ChatsList container */
+.chats-list-wrapper {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 400px;
+  background-color: #0a0a0a;
+  border: 1px solid #f5d13d;
+  border-radius: 12px;
+  padding: 0.5rem;
+  color: #f5d13d;
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.25);
+  overflow-y: auto;
+  max-height: 500px; /* optional scrollable area */
+}

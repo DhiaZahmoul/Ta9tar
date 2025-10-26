@@ -1,0 +1,20 @@
+{
+  "name": "ta9tar",
+  "version": "1.0.0",
+  "description": "Backend for Ta9tar chat app",
+  "main": "backend/server/dbConnector.js",
+  "scripts": {
+    "start": "node backend/server/dbConnector.js",
+    "dev": "nodemon backend/server/dbConnector.js"
+  },
+  "keywords": ["chat", "mongodb", "nodejs", "ta9tar"],
+  "author": "Zahmoul Dhia",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "mongodb": "^6.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

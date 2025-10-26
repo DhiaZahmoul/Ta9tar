@@ -1,0 +1,50 @@
+// backend/tests/dbTest.js
+const { client, connectDB } = require('../dataBase/dbConnector'); // your connector
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+// Import models
+const { Chat } = require('../dataBase/models/chatModel');
+const { User } = require('../dataBase/models/userModel');
+const { Message } = require('../dataBase/models/messageModel');
+
+async function testConnection() {
+  try {
+    // 1️⃣ Connect via your connector
+    await connectDB();
+
+    // 2️⃣ Make mongoose use the same client
+    await mongoose.connect(process.env.dbURI); // can reuse client.db() too if you want raw driver
+
+    console.log('✅ Mongoose connected using dbConnector');
+
+    // 3️⃣ Test CRUD operations
+    const testUser = await User.create({ name: 'Test User', email: 'test@example.com', password: 'password123' , username: 'testuser'});
+    const testChat = await Chat.create({ chatName: 'Test Chat', users: [testUser._id] });
+    const testMessage = await Message.create({
+      sender: testUser._id,
+      content: 'Hello world!',
+      chat: testChat._id
+    });
+
+    console.log('Created test user:', testUser);
+    console.log('Created test chat:', testChat);
+    console.log('Created test message:', testMessage);
+
+    // 4️⃣ Cleanup
+    await User.deleteOne({ _id: testUser._id });
+    await Chat.deleteOne({ _id: testChat._id });
+    await Message.deleteOne({ _id: testMessage._id });
+
+    console.log('✅ Test documents cleaned up');
+
+    // 5️⃣ Close connections
+    await mongoose.connection.close();
+    await client.close();
+    console.log('✅ MongoDB connections closed');
+  } catch (err) {
+    console.error('❌ Test failed:', err);
+  }
+}
+
+testConnection();

@@ -1,0 +1,99 @@
+/* createChat.css */
+
+/* Container */
+.create-chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #0a0a0a; /* deep black background */
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  margin: 2rem auto;
+  color: #f5d13d; /* gold text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Input for chat name */
+.chat-name-input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #f5d13d;
+  background-color: #1a1a1a;
+  color: #f5d13d;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.chat-name-input::placeholder {
+  color: #d1b64a99; /* slightly transparent gold */
+}
+
+.chat-name-input:focus {
+  border-color: #ffd700;
+  box-shadow: 0 0 6px #ffd70066;
+}
+
+/* Button */
+.create-chat-btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #f5d13d, #ffd700);
+  color: #0a0a0a;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.create-chat-btn:hover {
+  background: linear-gradient(90deg, #ffd700, #f5d13d);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Selected users container */
+.selected-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.selected-contacts .user-chip {
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  background-color: #333333;
+  color: #f5d13d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Remove user button inside chip */
+.selected-contacts .user-chip button {
+  background: none;
+  border: none;
+  color: #f5d13d;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.selected-contacts .user-chip button:hover {
+  color: #ffd700;
+}
+
+/* HeaderForm placeholder adjustments */
+.header-form {
+  margin-bottom: 1rem;
+}
+
+/* Scroll if content overflows */
+.create-chat-container {
+  max-height: 80vh;
+  overflow-y: auto;
+}

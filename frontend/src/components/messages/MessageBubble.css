@@ -1,0 +1,70 @@
+.message-bubble {
+  display: flex;
+  align-items: flex-end;
+  margin: 8px 0;
+  max-width: 70%;
+}
+
+.message-bubble.other {
+  align-self: flex-start;
+  flex-direction: row;
+}
+
+.message-bubble.own {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+/* Avatar with initials */
+.bubble-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 215, 0, 0.15);
+  color: #FFD700;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px;
+  font-size: 0.9rem;
+}
+
+/* Message box */
+.message-content {
+  background-color: #1a1a1a;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #FFD700;
+  border-radius: 16px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.message-bubble.own .message-content {
+  background-color: #FFD700;
+  color: #0a0a0a;
+  border: none;
+}
+
+.message-sender {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+.message-text {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.message-time {
+  font-size: 0.7rem;
+  align-self: flex-end;
+  margin-top: 4px;
+  opacity: 0.6;
+}

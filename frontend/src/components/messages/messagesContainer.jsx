@@ -21,13 +21,14 @@ const MessagesContainer = ({ messages }) => {
   return (
     <div className="messages-container" ref={containerRef}>
       {messages && messages.length > 0 ? (
-        messages.map((msg) => (
-          <MessageBubble
-            key={msg._id}
-            message={msg}
-            currentUserId={currentUserId}
-          />
-        ))
+        messages.map((msg, index) => (
+  <MessageBubble
+    key={msg._id || index}  // fallback to index if _id missing
+    message={msg}
+    currentUserId={currentUserId}
+  />
+))
+
       ) : (
         <div className="no-messages">
           <p>No messages yet.</p>

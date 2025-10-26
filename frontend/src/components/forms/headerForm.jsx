@@ -14,38 +14,35 @@ function HeaderForm({ onAddUser }) {
   const [username, setUsername] = useState('');
   const [users, setUsers] = useState([]);
 
-  // ✅ Get current user ID from Redux
- const currentUserId = useSelector((state) => state.auth.userId);
-
-
+  const currentUserId = useSelector((state) => state.auth.userId);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (username.trim() === '') return;
+    if (!username.trim()) return;
 
-    const token = localStorage.getItem("token");
-    const response = await fetch(
-      `http://localhost:5000/api/users/search?username=${encodeURIComponent(username)}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `http://localhost:5000/api/users/search?username=${encodeURIComponent(username)}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          }
         }
-      }
-    );
+      );
 
-    if (!response.ok) {
-      console.error('Error fetching users');
-      return;
+      if (!response.ok) throw new Error("Failed to fetch users");
+
+      const data = await response.json();
+
+      // Only include valid users and filter out current user
+      const filteredUsers = data.filter(u => u && u._id && u._id !== currentUserId);
+      setUsers(filteredUsers);
+    } catch (err) {
+      console.error("Error fetching users:", err);
+      setUsers([]);
     }
-
-    const data = await response.json();
-
-    // ✅ Filter out current user
-    const filteredUsers = data.filter(user => user._id !== currentUserId);
-
-    setUsers(filteredUsers); // update search results
   }
 
   return (
@@ -57,7 +54,6 @@ function HeaderForm({ onAddUser }) {
               <Form.Control
                 type="text"
                 placeholder="Search by username..."
-                aria-label="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -69,7 +65,6 @@ function HeaderForm({ onAddUser }) {
         </Container>
       </Navbar>
 
-      {/* Render ContactList dynamically with onAddUser */}
       {users.length > 0 && <ContactList users={users} onAddUser={onAddUser} />}
     </>
   );

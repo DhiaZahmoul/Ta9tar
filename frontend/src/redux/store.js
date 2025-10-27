@@ -1,3 +1,7 @@
+// frontend/src/redux/store.js
+// Redux store configuration
+//FILE CREATED BY CHATGPT
+
 import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './slices/contactSlice';
 import chatsReducer from './slices/chatSlice';

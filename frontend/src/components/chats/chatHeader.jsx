@@ -1,3 +1,11 @@
+// frontend/src/components/chats/chatHeader.jsx
+// ChatHeader component
+//Displays chat name, avatar, and back button
+//Shows active status of other user in one-on-one chats
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';

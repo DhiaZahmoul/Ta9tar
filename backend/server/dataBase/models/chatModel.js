@@ -1,3 +1,7 @@
+// backend/server/dataBase/models/chatModel.js
+// Chat model definition
+//Might be extended later with additional fields 
+
 const mongoose = require('mongoose');
 
 const chatSchema = new mongoose.Schema({

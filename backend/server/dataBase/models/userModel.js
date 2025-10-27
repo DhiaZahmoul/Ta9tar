@@ -1,3 +1,7 @@
+// backend/server/dataBase/models/userModel.js
+// User model definition
+//Stores user information
+//Might be extended later with profile info, status, etc.
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({

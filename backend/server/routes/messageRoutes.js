@@ -1,3 +1,9 @@
+// backend/server/routes/messageRoutes.js
+// Message routes
+//Used to be HTTP routes, now mostly handled via Socket.IO for real-time
+//This file might get removed later if not needed
+//Keeping it for reference for now
+
 const express = require('express');
 const router = express.Router();
 

@@ -1,3 +1,8 @@
+// backend/server/dataBase/models/messageModel.js
+// Message model definition
+//Stores individual messages in chats
+//References sender (User) and chat (Chat)
+//Might be extended later with read receipts, attachments, etc.
 const mongoose = require('mongoose');
 
 

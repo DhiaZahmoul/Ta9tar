@@ -1,3 +1,7 @@
+// backend/server/controllers/authController.js
+// Authentication controller
+//Handles user login, generates JWT tokens
+//Updates lastSeen on successful login
 const User = require('../dataBase/models/userModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -18,18 +22,20 @@ async function login(req, res) {
     if (!isMatch)
       return res.status(401).json({ message: 'Invalid credentials' });
 
-    // ✅ Update lastSeen to current time
+    // Update lastSeen
     user.lastSeen = new Date();
     await user.save();
 
-    // ✅ Generate JWT token
+    // Generate JWT with only user ID
     const token = jwt.sign(
-      { id: user._id, isAdmin: user.isAdmin },
+      { id: user._id }, // only sign the user ID, IsAdmin removed
       process.env.JWT_SECRET,
       { expiresIn: '1d' }
     );
 
-    // ✅ Include user info in response
+    // Respond with token and user info
+    // Only return necessary user info
+    //Might remove more fields later for security
     return res.status(200).json({
       message: 'Login successful',
       token,

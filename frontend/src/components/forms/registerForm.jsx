@@ -1,3 +1,15 @@
+// frontend/src/components/forms/registerForm.jsx
+// RegisterForm component
+//Form to register new users
+//Collects username, email, and password
+//very terrible design for now
+//Must enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Important component for user registration
+//Handles form submission and error display
+//Must add login redirection later(not implemented yet but very crucial for user flow)
+
+
 "use client";
 
 import React from "react";
@@ -49,7 +61,7 @@ const handleSubmit = async (e) => {
       });
   };
 
-
+// Render component
   return (
     <div className="register-container">
         <h2>Register</h2>

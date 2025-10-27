@@ -1,3 +1,8 @@
+// backend/server/routes/userRoutes.js
+// User routes
+//Some routes might be restricted to admin users only
+//User registration handled here instead of authRoutes.js
+
 const express = require('express');
 const router = express.Router();
 
@@ -27,9 +32,14 @@ router.get('/', authMiddleware, isAdminMiddleware, getAllUsers);
 router.get('/:userId', authMiddleware, getUserById);
 
 // Route to update user by ID (authenticated)
+//Users can update their own info, admins can update any user
+//Might need additional middleware to check if user is updating their own info or is admin
+//Frontend functionality to be added to allow users to update their info
 router.put('/:userId', authMiddleware, updateUser);
 
 // Route to delete a user (admin only)
+//Most likely will be moved to adminRoutes.js later
+//Users might only be able to deactivate their own accounts instead of deleting them
 router.delete('/:userId', authMiddleware, isAdminMiddleware, deleteUser);
 
 module.exports = router;

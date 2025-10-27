@@ -1,3 +1,7 @@
+// backend/server/controllers/userController.js
+// User controller functions
+//Handles user creation, retrieval, updating, deletion, and searching by username
+//ALL ROUTES SAFELY TESTED AND WORKING FINE(using Postman)
 const User = require('../dataBase/models/userModel');
 require('dotenv').config();
 const adminEmail = process.env.ADMIN_EMAIL;
@@ -24,7 +28,8 @@ async function createUser(req, res) {
 }
 }
 
-
+// Get user by ID
+//Not called directly in routes for now
 async function getUserById(req, res) {
     try{
         const { userId } = req.params;
@@ -42,6 +47,10 @@ async function getUserById(req, res) {
     return res.status(500).json({ message: "Internal server error" });
 }
 }
+// Update user by ID
+//Might restrict this to user themselves or admins later(recommended for production)
+//For now, any user can update any user(not ideal for production)
+//Not an urgent problem as this route is not exposed in the frontend yet
 
 async function updateUser(req, res) {
     try{
@@ -67,7 +76,11 @@ async function updateUser(req, res) {
     return res.status(500).json({ message: "Internal server error" });
 }
 }
-
+// Delete user by ID
+//Might restrict this to admins or user themselves later
+//For now, any user can delete any user(not ideal for production)
+//Not an urgent problem as this route is not exposed in the frontend yet
+//Might be removed later to just deactivate account instead of full deletion
 async function deleteUser(req, res) {
     try{
         const { userId } = req.params;
@@ -84,8 +97,10 @@ async function deleteUser(req, res) {
     console.error("Error deleting user:", error);
     return res.status(500).json({ message: "Internal server error" });
 }
-}
-
+};
+// Get all users
+//Might be paginated later if many users
+//Might be restricted to admins later(recommended for production)
 async function getAllUsers(req, res) {
     try {
         const users = await User.find();
@@ -95,7 +110,11 @@ async function getAllUsers(req, res) {
         return res.status(500).json({ message: "Internal server error" });
     }
 }   
-
+// Search users by username (partial, case-insensitive)
+//Might be paginated later if many results(not a likely scenario for usernames)
+//Very useful for adding users to chats --> very sensitive for frontend testing and functionality
+//ALL TESTED AND WORKING FINE
+//DO NOT MODIFY WITHOUT TESTING FRONTEND FUNCTIONALITY
 async function searchUsersByUsername(req, res) {
   try {
     const { username } = req.query;

@@ -1,6 +1,13 @@
+// frontend/src/components/buttons/chatButton.jsx
+// ChatButton component
+//Allows users to create new chats
+//Opens a form to add contacts when clicked
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
 "use client";
 import React, { useState } from 'react';
-import AddContactForm from '../forms/addContactForm'; // adjust path if needed
+import AddContactForm from '../forms/addContactForm';
 import './ChatButton.css';
 
 const ChatButton = () => {

@@ -1,3 +1,13 @@
+// frontend/src/components/contacts/selectedContacts.jsx
+// SelectedContacts component
+//Displays selected contacts in chat creation
+//Shows avatar and name of each selected contact
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Might need to integrate with global state later
+
+
 import React from 'react';
 import './selectedContact.css';
 

@@ -1,6 +1,12 @@
+// frontend/src/components/buttons/contactsButton.jsx
+// ContactsButton component
+//Toggles display of ChatsList when clicked
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
 "use client";
 import React, { useState } from 'react';
-import ChatsList from '../chats/chatsList'; // adjust path if needed
+import ChatsList from '../chats/chatsList'; 
 import './contactsButton.css';
 
 const ContactsButton = () => {

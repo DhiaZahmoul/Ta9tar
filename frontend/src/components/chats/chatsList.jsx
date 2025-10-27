@@ -1,3 +1,11 @@
+// frontend/src/components/chats/chatsList.jsx
+// ChatsList component
+//Displays list of user's chats and selected chat container
+//Fetches chats from backend API
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Terribly structured for now, might refactor later
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';

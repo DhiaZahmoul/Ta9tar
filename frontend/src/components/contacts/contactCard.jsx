@@ -1,3 +1,15 @@
+// frontend/src/components/contacts/contactCard.jsx
+// ContactCard component
+//Displays individual contact details
+//Shows name, status, and add button
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Uses status to show online/offline indicator
+//Status is not yet integrated with real-time updates
+//Assumes status is passed as a prop
+//Might need to integrate with global state later
+"use client";
 import React from 'react';
 import './contactCard.css';
 

@@ -1,3 +1,9 @@
+// backend/server/middlewares/isAdminMiddleware.js
+// Authentication middleware
+//Verifies JWT token and checks if user is admin
+//Used to restrict access to admin-only routes
+//Obsolete for now until admin functionality is added
+
 const token = require('jsonwebtoken');
 require('dotenv').config();
 

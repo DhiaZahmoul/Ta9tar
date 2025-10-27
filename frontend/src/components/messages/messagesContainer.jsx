@@ -1,3 +1,13 @@
+//Warning: File naming might be confusing. Do not confuse ChatContainer or MessageBubble component.
+//  --> this component contains all the messages in a chat, while MessageBubble is for individual messages.
+// ChatContainer contains all the Chat UI including MessagesContainer.jsx and MessageInput.jsx and others.
+
+// frontend/src/components/messages/messagesContainer.jsx
+// MessagesContainer component
+//Displays list of message bubbles in a chat
+//Auto-scrolls to bottom on new messages
+
+
 'use client';
 import React, { useEffect, useRef } from 'react';
 import MessageBubble from '../messages/messageBubble';

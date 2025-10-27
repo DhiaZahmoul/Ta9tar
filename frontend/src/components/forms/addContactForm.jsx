@@ -1,3 +1,18 @@
+
+
+//WARNING: File naming might be confusing, this is actually CreateChat component -> file is misnamed to addContactForm.jsx to better fit project structure
+
+
+// frontend/src/components/forms/addContactForm.jsx
+// AddContactForm component
+//Form to add contacts by username
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Very Important component for adding contacts
+//View child components for better understanding of structure
+//
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -31,7 +46,9 @@ const CreateChat = () => {
       setChatName('');
     }
   }, [selectedUsers]);
-
+// Function to create chat
+// Sends POST request to backend API
+//Many safety checks and error handling added because of reaccuring issues with chat creation including invalid or missing user IDs.
   const handleCreateChat = async () => {
     if (!chatName || selectedUsers.length === 0) {
       alert("Please select users and provide a chat name.");
@@ -84,7 +101,7 @@ const CreateChat = () => {
       alert("Something went wrong. Please try again.");
     }
   };
-
+// Render component
   return (
     <div className="create-chat-container">
       <HeaderForm onAddUser={handleAddUser} />

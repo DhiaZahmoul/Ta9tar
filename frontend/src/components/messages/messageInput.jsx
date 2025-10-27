@@ -1,3 +1,14 @@
+// frontend/src/components/messages/messageInput.jsx
+// MessageInput component
+//Input field for sending messages in a chat
+//Sends messages via WebSocket
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Important component for real-time messaging
+//Integrates with socket.io for real-time communication
+//Might be heavily modified later based on chat features( reactions, attachments, etc.)
+
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';

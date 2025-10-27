@@ -1,4 +1,7 @@
-
+// backend/server/dataBase/dbConnector.js
+// Database connection setup
+//Connects to MongoDB using Mongoose
+//Exits process if connection fails
 const mongoose = require("mongoose");
 
 const uri = process.env.dbURI;

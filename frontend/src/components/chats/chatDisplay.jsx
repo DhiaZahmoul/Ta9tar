@@ -1,3 +1,13 @@
+// frontend/src/components/chats/chatDisplay.jsx
+// ChatDisplay component
+//Displays individual chat details in ChatsList
+//Shows chat name, participants, creation date
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//Might be adjusted later for more features(avatar, last message, etc)
+"use client";
+
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './ChatDisplay.css'; // import the CSS

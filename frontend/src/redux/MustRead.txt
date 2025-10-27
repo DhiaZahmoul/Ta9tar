@@ -1,0 +1,3 @@
+Most files in this directory are useless and were created before making important UI decisions so most of them are not in use yet.
+
+Only authActions.js and AuthSlice.js currently functional.

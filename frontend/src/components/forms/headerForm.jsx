@@ -1,3 +1,15 @@
+//WARNING: file naming might be confusing, this is actually HeaderForm component -> file is misnamed to headerForm.jsx to better fit project structure
+//DO NOT CONFUSE WITH NAVBAR HEADER COMPONENTS(not created yet)
+
+
+// frontend/src/components/forms/headerForm.jsx
+// HeaderForm component
+//Displays search bar to find users by username
+//Shows list of found users using ContactList
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+
 'use client';
 
 import { useState } from 'react';
@@ -44,7 +56,9 @@ function HeaderForm({ onAddUser }) {
       setUsers([]);
     }
   }
-
+// Render component
+//Uses Bootstrap for styling
+//Includes ContactList to show found users
   return (
     <>
       <Navbar className="bg-body-tertiary py-2">

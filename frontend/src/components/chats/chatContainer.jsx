@@ -1,3 +1,12 @@
+// frontend/src/components/chats/chatContainer.jsx
+// ChatContainer component
+//Displays chat header, messages, and input for a selected chat
+//Integrates with Socket.IO for real-time messaging
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css entirely created by CHATGPT
+//View child components for better understanding of structure
+
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';

@@ -1,3 +1,12 @@
+// frontend/src/components/messages/messageBubble.jsx
+// MessageBubble component
+//Displays individual message bubble
+//Shows sender info, message content, and timestamp
+//Avatars Not Working properly yet
+//Must find a way to integrate avatars properly
+//css entirely created by CHATGPT
+//styling not bad for now
+
 'use client';
 import React from 'react';
 import './MessageBubble.css';

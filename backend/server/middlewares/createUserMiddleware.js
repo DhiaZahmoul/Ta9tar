@@ -1,3 +1,7 @@
+// backend/server/middlewares/createUserMiddleware.js
+// Middleware to validate user data and hash password
+//Used in userRoutes.js to validate and hash password before creating user
+//Might be extended later for ensuring unique usernames and emails.
 const bcrypt = require('bcrypt');
 require('dotenv').config();
 

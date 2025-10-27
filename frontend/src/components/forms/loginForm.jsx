@@ -1,3 +1,14 @@
+// frontend/src/components/forms/loginForm.jsx
+// LoginForm component
+//Handles user login functionality
+//Sends login data to backend API
+//Simple and functional for now
+//Might enhance UI/UX later with better design
+//css Handled globally (in the login page) for consistency
+//Handles storing user ID in Redux and localStorage
+//VERY IMPORTANT for authentication flow
+//Might import additional security features later
+
 "use client";
 
 import React, { useState } from "react";
@@ -50,7 +61,7 @@ const LoginForm = () => {
       // Store token if needed
       if (data.token) localStorage.setItem("token", data.token);
 
-      // ✅ Store only user ID in Redux
+      // Store only user ID in Redux
       if (data.user && data.user._id) {
         dispatch(loginSuccess(data.user._id));
         localStorage.setItem("currentUserId", data.user._id);

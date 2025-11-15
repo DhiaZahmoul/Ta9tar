@@ -1,0 +1,10 @@
+.leftUpperBar {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffd700; /* gold */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7); /* subtle shadow for depth */
+  cursor: default;
+  user-select: none;
+}

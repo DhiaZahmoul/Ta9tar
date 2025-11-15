@@ -8,13 +8,53 @@
 "use client";
 import React from "react";
 import LoginForm from "@/components/forms/loginForm";
-import './login.css';
+import GhostCursor from "@/components/animated/ta9tar";
+import "./login.css";
 
-export default function page() {
-    return (
-        <div className="login-page">
-            <img src='/backGround.png' alt='Background' className='auth-image' />
-            <LoginForm />
-        </div>
-    );
+// Import static image
+import back from "../../../public/back.png";
+
+export default function Page() {
+  return (
+    <div className="login-page">
+      
+      {/* LEFT SIDE: Image + GhostCursor */}
+     <div className="left-side">
+  <img 
+    src={back.src} 
+    alt="Background" 
+    className="left-image"
+  />
+
+  {/* Curved text under image */}
+  <svg className="left-text-arc" width="100%" height="100" viewBox="0 0 500 100">
+    <path id="arcPath" d="M20,20 Q250,100 480,20" fill="transparent"/>
+    <text fill="#FFD700" fontSize="18" fontWeight="500">
+      <textPath href="#arcPath" startOffset="50%" textAnchor="middle" className="arc-text">
+        Welcome to Ta9tar! Login now to start chatting.
+      </textPath>
+    </text>
+  </svg>
+</div>
+
+
+      <GhostCursor
+        color="#FFD700"
+         brightness={1}         // slightly less bright for subtlety
+        edgeIntensity={0.2}      // softer edges
+        trailLength={60}         // shorter, subtle trail
+        inertia={0.6}            // smooth trailing
+        grainIntensity={0.01}    // minimal grain
+        bloomStrength={0.15}     // softer glow
+        bloomRadius={1.0}
+        bloomThreshold={0.025}
+        fadeDelayMs={1000}
+        fadeDurationMs={1500}
+      />
+      {/* RIGHT SIDE: Login Form */}
+      <LoginForm />
+    </div>
+  );
 }
+
+

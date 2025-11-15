@@ -1,28 +1,29 @@
-// frontend/src/components/chats/chatDisplay.jsx
-// ChatDisplay component
-//Displays individual chat details in ChatsList
-//Shows chat name, participants, creation date
-//Simple and functional for now
-//Might enhance UI/UX later with better design
-//css entirely created by CHATGPT
-//Might be adjusted later for more features(avatar, last message, etc)
 "use client";
 
 import React from 'react';
-import { useSelector } from 'react-redux';
-import './ChatDisplay.css'; // import the CSS
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelectedChat } from '../../redux/slices/chatSlice';
+import { setActiveComponent } from '../../redux/slices/UiSlice';
+import './ChatDisplay.css';
 
 const ChatDisplay = ({ chat }) => {
+  const dispatch = useDispatch();
   const currentUserId = useSelector((state) => state.auth.userId);
 
   // Exclude current user from participant list
   const otherUsers = chat.users
-    .filter(user => user._id !== currentUserId) // exclude logged-in user
+    .filter(user => user._id !== currentUserId)
     .map(user => user.username)
     .join(', ');
 
+  // Handle click to open chat in main container
+  const handleClick = () => {
+    dispatch(setSelectedChat(chat));
+    dispatch(setActiveComponent('chat'));
+  };
+
   return (
-    <div className="chat-card">
+    <div className="chat-card" onClick={handleClick} style={{ cursor: 'pointer' }}>
       <h3 className="chat-name">{chat.chatName}</h3>
       {otherUsers.length > 0 && <p className="chat-users">With: {otherUsers}</p>}
       <p className="chat-date">Created: {new Date(chat.createdAt).toLocaleString()}</p>

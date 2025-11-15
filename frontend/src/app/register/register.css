@@ -1,42 +1,56 @@
-/* ====== Register Page Container (Grid) ====== */
-.register-page {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* two equal halves */
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden; /* prevent scrollbars */
-  font-family: "Inter", "Segoe UI", sans-serif;
-  color: #e0e0e0;
-  background-color: #0c0c0c;
+/* Prevent scrolling globally */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-/* ====== Left: Register Form ====== */
+/* Layout: Two Halves */
+.register-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #000;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  position: relative;
+}
+
+/* RIGHT SIDE: Gold-on-Black Register Form */
 .register-form {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertically center */
-  align-items: center;     /* horizontally center */
-  padding: 2rem;
-  height: 100%;            /* fill grid cell */
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  height: 100%;
   box-sizing: border-box;
-  background-color: #0c0c0c;
+  position: relative;
+  z-index: 10; /* above ghost cursor */
+  color: #DA9100; /* HARVEST GOLD text */
 }
 
-/* ====== Form Styling ====== */
+/* Form Headings */
 .register-form h1 {
-  font-size: 2.8rem;
-  letter-spacing: 2px;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 3px;
   margin-bottom: 1rem;
-  color: #f5f5f5;
+  color: #DA9100; /* harvest gold */
+  text-transform: uppercase;
 }
 
 .register-form h2 {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  color: #f0f0f0;
+  color: #FFD700; /* bright gold accent */
 }
 
+/* Errors */
 .register-form .error {
   background-color: #331616;
   color: #f2bcbc;
@@ -46,57 +60,63 @@
   margin-bottom: 1.5rem;
 }
 
+/* Labels */
 .register-form label {
   display: block;
   margin-bottom: 0.4rem;
   font-size: 0.9rem;
-  color: #bbb;
+  color: #DA9100;
 }
 
+/* Inputs */
 .register-form input {
   width: 100%;
-  padding: 0.9rem 1rem;
-  margin-bottom: 1.2rem;
-  border: 1px solid #1e1e1e;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.4rem;
+  border: 1px solid #444;
   border-radius: 6px;
-  background-color: #161616;
-  color: #f0f0f0;
-  transition: border 0.2s ease, background 0.2s ease;
+  background-color: #141414;
+  color: #FFD700; /* gold text */
+  font-size: 1rem;
+  transition: all 0.25s ease;
 }
 
 .register-form input:focus {
   outline: none;
-  border-color: #ff3b6a;
+  border-color: #DA9100;
   background-color: #1a1a1a;
 }
 
+/* Submit Button */
 .register-form button {
   width: 100%;
   padding: 1rem;
-  background: #2b2b2b;
-  color: #f0f0f0;
-  font-weight: 600;
-  border: none;
+  background: #111;
+  border: 1px solid #DA9100;
+  color: #DA9100;
+  font-weight: 700;
   border-radius: 6px;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: background 0.3s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
 }
 
 .register-form button:hover {
-  background: #ff3b6a;
+  background: #DA9100;
+  color: #000;
   transform: translateY(-1px);
 }
 
+/* Footer text */
 .register-form p {
   margin-top: 1.5rem;
   text-align: center;
   font-size: 0.9rem;
-  color: #999;
+  color: #c5a500;
 }
 
 .register-form p a {
-  color: #ff3b6a;
+  color: #FFD700;
   text-decoration: none;
 }
 
@@ -104,21 +124,27 @@
   text-decoration: underline;
 }
 
-/* ====== Right: Background Image ====== */
-.register-image {
+
+/* LEFT SIDE IMAGE */
+.left-side img {
+  max-width: 50%;
+  height: auto;
+  transition: filter 0.4s ease, transform 0.4s ease;
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.left-side img:hover {
+  filter: blur(0);
+  transform: scale(1.05);
+}
+
+.left-side {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0b0b0b;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* no scroll */
-}
-
-.register-image img {
-  max-width: 100%;
-  max-height: 100%; /* fit inside container */
-  object-fit: contain; /* fully visible */
-  filter: brightness(0.8);
-  display: block;
 }

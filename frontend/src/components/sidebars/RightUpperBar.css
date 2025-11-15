@@ -1,0 +1,18 @@
+.rightUpperBar {
+  color: #ffd700; /* gold */
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: default;
+  padding: 0 10px;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.rightUpperBar:hover {
+  color: #fff176; /* slightly lighter gold on hover */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+}
+.rightUpperBar:active {
+  transform: scale(0.98);
+}

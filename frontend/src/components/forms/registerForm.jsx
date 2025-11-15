@@ -14,9 +14,10 @@
 
 import React from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
-
+    const router = useRouter();
     const [registerData, setRegisterData]= useState({username:"",email:"",password:""})
     const [error, setError]= useState("")
 
@@ -46,8 +47,7 @@ const handleSubmit = async (e) => {
     }
 
     console.log("Registration successful:", data);
-    // Optionally redirect the user after success
-    // e.g., router.push("/login")
+    router.push("/login");
   } catch (err) {
     console.error("Error:", err);
     setError("Network error. Please try again later.");

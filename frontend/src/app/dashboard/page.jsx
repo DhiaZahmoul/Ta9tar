@@ -1,69 +1,75 @@
-// frontend/src/app/dashboard/page.jsx
-// Dashboard page component
-//Major UI fixes are needed here later
-//Recently added Socket.IO integration
-//URGENT: must figure out final dashboard layout and structure later
 'use client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import ContactsButton from "../../components/buttons/contactsButton";
-import ChatButton from "../../components/buttons/chatButton";
-import ChatsList from "../../components/chats/chatsList";
-import {socket} from "../../socket/socket";
+import LeftSideBar from '@/components/sidebars/LeftSideBar';
+import RightSideBar from '@/components/sidebars/RightSideBar';
+import LeftUpperBar from '@/components/sidebars/leftUpperBar';
+import RightUpperBar from '@/components/sidebars/rightUpperBar';
+import MainContainer from '@/components/MainContainer';
+import './dashboard.css';
+import Aurora from '@/components/animated/Aurora';
+import { socket } from "../../socket/socket";
 
 const DashboardPage = () => {
   const userId = useSelector((state) => state.auth.userId);
+  const selectedChat = useSelector((state) => state.chat.selectedChat); // Redux
   const [onlineUsers, setOnlineUsers] = useState([]);
-  // Manage Socket.IO connection and events
-  //Recently added 
-  //Might get modified later as Socket.IO integration improves
+
   useEffect(() => {
     if (!userId) return;
 
-    // Connect socket
     socket.connect();
-
-    // Tell backend who this user is
     socket.emit('registerUser', userId);
 
-    // Receive initial list of online users
-    socket.on('onlineUsers', (users) => {
-      setOnlineUsers(users);
-    });
-
-    // Update when users go online
+    socket.on('onlineUsers', (users) => setOnlineUsers(users));
     socket.on('userOnline', ({ userId: onlineId }) => {
-      setOnlineUsers((prev) => [...new Set([...prev, onlineId])]);
+      setOnlineUsers(prev => [...new Set([...prev, onlineId])]);
     });
-
-    // Update when users go offline
     socket.on('userOffline', ({ userId: offlineId }) => {
-      setOnlineUsers((prev) => prev.filter((id) => id !== offlineId));
+      setOnlineUsers(prev => prev.filter(id => id !== offlineId));
     });
 
-    // Cleanup on page unload
     return () => {
       socket.disconnect();
       setOnlineUsers([]);
     };
   }, [userId]);
+  console.log('Online Users:', onlineUsers);
 
-  // Render the dashboard UI
-  //Very basic for now, needs major improvements later
   return (
-    <div className="d-flex">
-      <div className="p-3 border-end">
-        <ContactsButton />
-        <ChatButton />
-       
-        <p className="mt-3 text-warning">
-          Online: {onlineUsers.length} 
-        </p>
+    <div className="dashboard-container">
+      <div className="background-image">
+                  <Aurora
+                      colorStops={["#000000", "#FFD700", "#DAA520"]}
+                      blend={0.5}
+                      amplitude={1.0}
+                      speed={0.5}
+                  />
+                  </div>
+      {/* Upper Bars */}
+      <div className="left-upper-bar">
+        <LeftUpperBar />
       </div>
 
-      <div className="flex-grow-1">
-        <ChatsList onlineUsers={onlineUsers} />
+      <div className="right-upper-bar">
+        <RightUpperBar />
+      </div>
+
+      {/* Left Sidebar */}
+      <div className="left-sidebar">
+        <LeftSideBar />
+      </div>
+
+      {/* Main Container */}
+      <div className="chat-container">
+        <MainContainer onlineUsers={onlineUsers} selectedChat={selectedChat} />
+        
+      </div>
+
+      {/* Right Sidebar */}
+      <div className="right-sidebar">
+        <RightSideBar onlineUsers={onlineUsers} />
       </div>
     </div>
   );

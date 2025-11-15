@@ -1,0 +1,9 @@
+.leftSideBar {
+  width: 200px;
+  background-color: #111; /* deep black */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-right: 1px solid #333; /* subtle separation */
+}

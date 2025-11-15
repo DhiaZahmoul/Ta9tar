@@ -8,13 +8,15 @@ import chatsReducer from './slices/chatSlice';
 import messagesReducer from './slices/messagesSlice';
 import userReducer from './slices/userSlice';
 import authReducer from './slices/authSlice';
+import uiReducer from './slices/UiSlice';
 
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
-    chats: chatsReducer,
+    chat: chatsReducer,
     messages: messagesReducer,
     user: userReducer,
     auth: authReducer,
+    ui: uiReducer,
   },
 });

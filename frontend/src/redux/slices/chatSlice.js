@@ -1,28 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  chats: [],
   selectedChat: null,
-  loading: false,
-  error: null,
 };
 
-const chatsSlice = createSlice({
-  name: 'chats',
+const chatSlice = createSlice({
+  name: 'chat',
   initialState,
   reducers: {
-    setChats: (state, action) => {
-      state.chats = action.payload;
-    },
-    selectChat: (state, action) => {
+    setSelectedChat: (state, action) => {
       state.selectedChat = action.payload;
     },
-    clearChats: (state) => {
-      state.chats = [];
+    clearSelectedChat: (state) => {
       state.selectedChat = null;
     },
   },
 });
 
-export const { setChats, selectChat, clearChats } = chatsSlice.actions;
-export default chatsSlice.reducer;
+export const { setSelectedChat, clearSelectedChat } = chatSlice.actions;
+export default chatSlice.reducer;

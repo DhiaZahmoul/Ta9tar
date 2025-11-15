@@ -25,11 +25,11 @@ router.post('/', createUserMiddleware, createUser);
 // Route to search users by username (authenticated)
 router.get('/search', authMiddleware, searchUsersByUsername);
 
-// Route to get all users (accessible by admin only)
-router.get('/', authMiddleware, isAdminMiddleware, getAllUsers);
-
 // Route to get user by ID (authenticated)
 router.get('/:userId', authMiddleware, getUserById);
+
+// Route to get all users (accessible by admin only)
+router.get('/', authMiddleware, isAdminMiddleware, getAllUsers);
 
 // Route to update user by ID (authenticated)
 //Users can update their own info, admins can update any user

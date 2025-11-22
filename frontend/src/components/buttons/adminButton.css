@@ -1,0 +1,63 @@
+.adminButton {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  /* Center it vertically while staying left-biased */
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.adminButton .card {
+  background-color: #000;              /* Black background */
+  color: #FFD700;                      /* Gold text */
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 20px;
+  width: 400px;
+  height: 550px;                       /* fix a consistent card height */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.adminButton .card:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.adminButton .card img {
+  height: 50%;                          /* take up 50% of card height */
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 100px;
+}
+
+.adminButton .card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.adminButton .card-text,
+.adminButton p {
+  font-size: 1rem;
+  color: rgba(255, 215, 0, 0.85);
+}
+
+.adminButton p {
+  margin-top: 8px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Optional: style your standalone image */
+.adminButton img:last-child {
+  width: 110px;
+  height: auto;
+  opacity: 0.9;
+}

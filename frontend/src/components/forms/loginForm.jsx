@@ -3,7 +3,6 @@
 //Handles user login functionality
 //Sends login data to backend API
 //Simple and functional for now
-//Might enhance UI/UX later with better design
 //css Handled globally (in the login page) for consistency
 //Handles storing user ID in Redux and localStorage
 //VERY IMPORTANT for authentication flow

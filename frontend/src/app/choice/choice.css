@@ -1,0 +1,79 @@
+/* Full page container */
+.choicePage {
+  height: 100vh;
+  width: 100vw;
+
+  background-color: #000;
+  color: #FFD700;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between; /* push footer to bottom */
+  align-items: center;
+
+  overflow: hidden;    /* remove all scrolling */
+  text-align: center;
+  padding: 10px 5px 10px 5px; 
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+.choicePage .header h1 {
+  font-size: 2rem;      
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  color: #FFD700;
+}
+
+.choicePage .header h3 {
+  font-size: 1.2rem;    
+  margin: 0 0 10px 0;
+  color: rgba(255, 215, 0, 0.85);
+  font-weight: 500;
+}
+
+/* Cards container */
+.choiceButtons {
+  display: flex;
+  flex-direction: row;       /* side by side */
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 40px;                 
+  width: 100%;
+  max-width: 900px;          
+  flex-grow: 1;              /* occupy remaining space */
+  box-sizing: border-box;
+}
+
+/* Ensure cards fill container height proportionally */
+.choiceButtons .card {
+  flex: 1;
+  max-height: 100%;           /* no overflow */
+}
+
+/* Footer styling */
+.footer {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: rgba(255, 215, 0, 0.85);
+  font-size: 0.85rem;
+  line-height: 1.2rem;
+  text-align: center;
+}
+
+.footer .adminNotice {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: rgba(255, 215, 0, 0.65);
+}
+
+/* Optional: prevent any vertical overflow */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

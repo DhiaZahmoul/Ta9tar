@@ -1,0 +1,64 @@
+.userButton {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  /* Positioned like adminButton */
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.userButton .card {
+  background-color: #000;               /* Black */
+  color: #FFD700;                       /* Gold */
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 20px;
+  width: 400px;
+  height: 550px;                        /* fixed height */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.userButton .card:hover {
+  border-color: #FFD700;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Image takes up 50% of card height */
+.userButton .card img {
+  height: 50%;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 100px;
+}
+
+.userButton .card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #FFD700;
+}
+
+.userButton .card-text,
+.userButton p {
+  font-size: 1rem;
+  color: rgba(255, 215, 0, 0.85);
+}
+
+.userButton p {
+  margin-top: 8px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Optional: icon beside the card */
+.userButton img:last-child {
+  width: 110px;
+  height: auto;
+  opacity: 0.9;
+}

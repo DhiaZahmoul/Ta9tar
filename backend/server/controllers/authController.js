@@ -30,7 +30,7 @@ async function login(req, res) {
     const token = jwt.sign(
       { id: user._id }, // only sign the user ID, IsAdmin removed
       process.env.JWT_SECRET,
-      { expiresIn: '1d' }
+      { expiresIn: '1h' }
     );
 
     // Respond with token and user info
@@ -43,6 +43,7 @@ async function login(req, res) {
         _id: user._id,
         username: user.username,
         email: user.email,
+        isAdmin: user.isAdmin
       },
     });
   } catch (err) {

@@ -4,7 +4,7 @@
 //Sends login data to backend API
 //Simple and functional for now
 //css Handled globally (in the login page) for consistency
-//Handles storing user ID in Redux and localStorage
+//Handles storing user ID in Redux and localStorage and cookies
 //VERY IMPORTANT for authentication flow
 //Might import additional security features later
 
@@ -14,6 +14,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { loginStart, loginSuccess, loginFailure } from "../../redux/slices/authSlice";
+import cookies from 'js-cookie';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -68,8 +69,12 @@ const LoginForm = () => {
       } else {
         console.warn("No user object or _id found in response.");
       }
-
-      router.push("/dashboard");
+      if(data.user.isAdmin){
+        localStorage.setItem("isAdmin", "true");
+        router.push("/choice");
+      }else{
+        router.push("/dashboard");
+      }
     } catch (err) {
       console.error("Error during login:", err);
       dispatch(loginFailure("An error occurred. Please try again."));

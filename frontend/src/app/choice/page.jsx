@@ -1,11 +1,18 @@
-"use client"
+"use client";
 
-import React from 'react'
-import AdminButton from '@/components/buttons/adminButton'
-import UserButton from '@/components/buttons/userButton'
-import './choice.css'
+import React, { useEffect } from 'react';
+import AdminButton from '@/components/buttons/adminButton';
+import UserButton from '@/components/buttons/userButton';
+import './choice.css';
 
 const ChoicePage = () => {
+  useEffect(() => {
+    const isAdmin = localStorage.getItem("isAdmin");
+    if (!isAdmin || isAdmin !== "true") {
+      window.location.href = '/login'; // or '/dashboard'
+    }
+  }, []);
+
   return (
     <div className='choicePage'>
       <header className="header">
@@ -26,7 +33,7 @@ const ChoicePage = () => {
         </p>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default ChoicePage
+export default ChoicePage;

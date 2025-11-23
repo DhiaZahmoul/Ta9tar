@@ -1,0 +1,86 @@
+/* headerForm.css */
+
+/* Navbar styling */
+.navbar {
+  background-color: #000 !important; /* Black background */
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Input group */
+.form-control {
+  background-color: #111;
+  color: #FFD700;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 215, 0, 0.6);
+}
+
+/* Buttons */
+.input-group .btn {
+  border-radius: 0;
+  font-weight: 500;
+  color: #FFD700;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-group .btn-primary {
+  background-color: #FFD700;
+  color: #000;
+  border: 1px solid #FFD700;
+}
+
+.input-group .btn-primary:hover {
+  background-color: #e6c200;
+  border-color: #e6c200;
+}
+
+.input-group .btn-outline-primary {
+  background-color: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+}
+
+.input-group .btn-outline-primary:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+  border-color: #FFD700;
+}
+
+/* Search button */
+.input-group .btn-success {
+  background-color: #FFD700;
+  color: #000;
+  border: 1px solid #FFD700;
+  font-weight: 600;
+}
+
+.input-group .btn-success:hover {
+  background-color: #e6c200;
+  border-color: #e6c200;
+}
+
+/* Result component container */
+.result-container {
+  background-color: #000;
+  color: #FFD700;
+  padding: 20px;
+  margin: 20px auto;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
+  max-width: 900px;
+}
+
+/* General text inside results */
+.result-container p, .result-container span {
+  color: rgba(255, 215, 0, 0.85);
+}
+
+/* Optional: hover effect for individual items */
+.result-item:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+}

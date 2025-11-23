@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -8,46 +7,66 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
-import ContactList from '../contacts/contactList';
-import './headerForm.css';
+//import Result from './Result';
+import './search.css';
 
-function Search({ onAddUser }) {
-  const [username, setUsername] = useState('');
-  const [users, setUsers] = useState([]);
+function AdminSearch() {
+  const [query, setQuery] = useState('');
+  const [searchUsers, setSearchUsers] = useState(true); // default selected
+  const [searchChats, setSearchChats] = useState(true); // default selected
+  const [userResults, setUserResults] = useState([]);
+  const [chatResults, setChatResults] = useState([]);
 
   const currentUserId = useSelector((state) => state.auth.userId);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!username.trim()) return;
+    if (!query.trim()) return;
 
     try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(
-        `http://localhost:5000/api/users/search?username=${encodeURIComponent(username)}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
+      const token = localStorage.getItem('token');
+
+      // Build query parameters based on selection
+      const promises = [];
+
+      if (searchUsers) {
+        const usersPromise = fetch(
+          `http://localhost:5000/api/users/search?username=${encodeURIComponent(query)}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
           }
-        }
-      );
+        ).then(res => res.ok ? res.json() : []);
+        promises.push(usersPromise);
+      }
 
-      if (!response.ok) throw new Error("Failed to fetch users");
+      if (searchChats) {
+        const chatsPromise = fetch(
+          `http://localhost:5000/api/chats/search?chatName=${encodeURIComponent(query)}`,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+          }
+        ).then(res => res.ok ? res.json() : []);
+        promises.push(chatsPromise);
+      }
 
-      const data = await response.json();
+      const [usersData = [], chatsData = []] = await Promise.all(promises);
 
-      // Only include valid users and filter out current user
-      const filteredUsers = data.filter(u => u && u._id && u._id !== currentUserId);
-      setUsers(filteredUsers);
+      setUserResults(usersData);
+      setChatResults(chatsData);
+      console.log('Search Results:', { usersData, chatsData });
     } catch (err) {
-      console.error("Error fetching users:", err);
-      setUsers([]);
+      console.error('Error fetching results:', err);
+      setUserResults([]);
+      setChatResults([]);
     }
   }
-// Render component
-//Uses Bootstrap for styling
-//Includes ContactList to show found users
+
   return (
     <>
       <Navbar className="bg-body-tertiary py-2">
@@ -56,11 +75,23 @@ function Search({ onAddUser }) {
             <InputGroup>
               <Form.Control
                 type="text"
-                placeholder="Search by username..."
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Search..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />
-              <Button type="submit" variant="primary">
+              <Button
+                variant={searchUsers ? 'primary' : 'outline-primary'}
+                onClick={() => setSearchUsers(prev => !prev)}
+              >
+                Users
+              </Button>
+              <Button
+                variant={searchChats ? 'primary' : 'outline-primary'}
+                onClick={() => setSearchChats(prev => !prev)}
+              >
+                Chats
+              </Button>
+              <Button type="submit" variant="success">
                 Search
               </Button>
             </InputGroup>
@@ -68,9 +99,11 @@ function Search({ onAddUser }) {
         </Container>
       </Navbar>
 
-      {users.length > 0 && <ContactList users={users} onAddUser={onAddUser} />}
+      {/* Send results to Result component */}
+      {userResults.length > 0 && <Result results={[userResults, chatResults]} />}
+
     </>
   );
 }
 
-export default HeaderForm;
+export default AdminSearch;

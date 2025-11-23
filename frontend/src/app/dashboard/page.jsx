@@ -17,6 +17,13 @@ const DashboardPage = () => {
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
+      const registered = localStorage.getItem("token");
+      if (!registered) {
+        window.location.href = '/login'; // or '/dashboard'
+      }
+    }, []);
+
+  useEffect(() => {
     if (!userId) return;
 
     socket.connect();
@@ -35,7 +42,6 @@ const DashboardPage = () => {
       setOnlineUsers([]);
     };
   }, [userId]);
-  console.log('Online Users:', onlineUsers);
 
   return (
     <div className="dashboard-container">

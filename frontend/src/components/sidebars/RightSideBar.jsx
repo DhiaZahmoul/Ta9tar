@@ -3,7 +3,6 @@ import OnlineContactList from "../contacts/onlineContactsList";
 import './RightSideBar.css';
 
 const RightSideBar = ({ onlineUsers }) => {
-    console.log('RightSideBar onlineUsers:', onlineUsers);
   return (
     <div className="rightSideBar">
       <h3>Online Users</h3>

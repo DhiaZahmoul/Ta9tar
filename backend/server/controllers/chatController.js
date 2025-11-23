@@ -46,6 +46,21 @@ async function createChat(req, res) {
     return res.status(500).json({ message: "Internal server error" });
   }
 }
+
+async function getChatByChatName(req, res) {
+    try{
+        const { chatName } = req.query;
+    if( !chatName){
+        return res.status(400).json({ message: "Chat name is required" });
+    }
+
+    const foundChats = await chat.find({ chatName: { $regex: chatName, $options: 'i' } }).populate('users', '-password');
+    return res.status(200).json(foundChats);
+} catch (error) {
+    console.error("Error searching chats:", error);
+    return res.status(500).json({ message: "Internal server error" });
+}
+} 
 // Get chat by ID
 async function getChatById(req, res) {
     try{
@@ -107,4 +122,6 @@ async function getUserChats(req, res) {
   }
 }
 
-module.exports = { createChat, getChatById, deleteChat, getUserChats };
+
+
+module.exports = { createChat, getChatById, deleteChat, getUserChats, getChatByChatName };

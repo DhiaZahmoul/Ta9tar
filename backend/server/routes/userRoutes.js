@@ -38,7 +38,6 @@ router.get('/', authMiddleware, isAdminMiddleware, getAllUsers);
 router.put('/:userId', authMiddleware, updateUser);
 
 // Route to delete a user (admin only)
-//Most likely will be moved to adminRoutes.js later
 //Users might only be able to deactivate their own accounts instead of deleting them
 router.delete('/:userId', authMiddleware, isAdminMiddleware, deleteUser);
 

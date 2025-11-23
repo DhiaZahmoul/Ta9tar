@@ -1,11 +1,10 @@
 import React from 'react'
 import CircularGallery from '../animated/list'
-import userIcon from '../../../public/useIcon.png'
-import blog from '../../../public/blog.png'
 const ActionsList = () => {
     const items = [
         { image: '/useIcon.png', text: 'Users' },
-        { image: '/blog.png', text: 'Blogs' }
+        { image: '/blog.png', text: 'Blogs' },
+        { image: '/chat.png', text: 'Chats' },
     ]
     return (
         <div>

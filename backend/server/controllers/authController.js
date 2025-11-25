@@ -28,7 +28,7 @@ async function login(req, res) {
 
     // Generate JWT with only user ID
     const token = jwt.sign(
-      { id: user._id }, // only sign the user ID, IsAdmin removed
+      { id: user._id , isAdmin: user.isAdmin},
       process.env.JWT_SECRET,
       { expiresIn: '1h' }
     );

@@ -1,10 +1,9 @@
 // backend/server/middlewares/isAdminMiddleware.js
 // Authentication middleware
-//Verifies JWT token and checks if user is admin
-//Used to restrict access to admin-only routes
-//Obsolete for now until admin functionality is added
+// Verifies JWT token and checks if user is admin
+// Used to restrict access to admin-only routes
 
-const token = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const isAdminMiddleware = (req, res, next) => {
@@ -15,7 +14,7 @@ const isAdminMiddleware = (req, res, next) => {
         return res.status(401).json({ message: 'No token provided' });
     }
 
-    token.verify(tokenFromHeader, process.env.JWT_SECRET, (err, user) => {
+    jwt.verify(tokenFromHeader, process.env.JWT_SECRET, (err, user) => {
         if (err) {
             return res.status(403).json({ message: 'Invalid token' });
         }

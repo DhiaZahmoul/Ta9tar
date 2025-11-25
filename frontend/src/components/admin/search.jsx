@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Container from 'react-bootstrap/Container';
-//import Result from './Result';
+import SearchResults from './searchResults';
 import './search.css';
 
 function AdminSearch() {
@@ -98,9 +98,9 @@ function AdminSearch() {
           </Form>
         </Container>
       </Navbar>
-
-      {/* Send results to Result component */}
-      {userResults.length > 0 && <Result results={[userResults, chatResults]} />}
+      {(userResults.length > 0 || chatResults.length > 0) && (
+  <SearchResults Results={{ userResults, chatResults }} />
+)}
 
     </>
   );

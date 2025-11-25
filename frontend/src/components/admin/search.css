@@ -1,9 +1,8 @@
-/* headerForm.css */
-
 /* Navbar styling */
 .navbar {
   background-color: #000 !important; /* Black background */
   border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 12px 10px; /* slightly bigger */
 }
 
 /* Input group */
@@ -12,10 +11,13 @@
   color: #FFD700;
   border: 1px solid rgba(255, 215, 0, 0.4);
   border-radius: 0.25rem 0 0 0.25rem;
+  font-size: 1.1rem; /* bigger text */
+  padding: 10px 14px; /* bigger height */
 }
 
 .form-control::placeholder {
   color: rgba(255, 215, 0, 0.6);
+  font-size: 1rem; /* bigger placeholder */
 }
 
 /* Buttons */
@@ -23,6 +25,8 @@
   border-radius: 0;
   font-weight: 500;
   color: #FFD700;
+  font-size: 1rem; /* bigger */
+  padding: 6px 18px; /* bigger clickable area */
   transition: all 0.2s ease-in-out;
 }
 
@@ -54,6 +58,8 @@
   color: #000;
   border: 1px solid #FFD700;
   font-weight: 600;
+  font-size: 1rem; /* bigger */
+  padding: 6px 20px; /* bigger */
 }
 
 .input-group .btn-success:hover {
@@ -65,16 +71,18 @@
 .result-container {
   background-color: #000;
   color: #FFD700;
-  padding: 20px;
-  margin: 20px auto;
+  padding: 25px; /* bigger */
+  margin: 25px auto;
   border: 1px solid rgba(255, 215, 0, 0.3);
   border-radius: 15px;
   max-width: 900px;
+  font-size: 1.1rem; /* bigger */
 }
 
 /* General text inside results */
 .result-container p, .result-container span {
   color: rgba(255, 215, 0, 0.85);
+  font-size: 1.05rem; /* bigger */
 }
 
 /* Optional: hover effect for individual items */

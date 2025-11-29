@@ -4,7 +4,7 @@
   "description": "Backend server for Ta9tar project",
   "main": "server/dbConnector.js",
   "scripts": {
-    "start": "node server/dbConnector.js",
+    "start": "node server/server.js",
     "dev": "nodemon server/dbConnector.js"
   },
   "keywords": [],
